@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# zip and other compressed files
+
+.zip
+.rar
+.7zip
