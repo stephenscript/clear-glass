@@ -3,7 +3,6 @@
     "name": "Clear Glass",
     "description": "Remove obstructions from Glassdoor",
     "version": "1.0",
-    "permissions": ["tabs", "activeTab", "scripting"],
     "action": {
         "default_popup": "splash.html",
         "default_icon": "icon16.png"
