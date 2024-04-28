@@ -131,6 +131,6 @@ dist
 
 # zip and other compressed files
 
-.zip
-.rar
-.7zip
+*.zip
+*.rar
+*.7zip
