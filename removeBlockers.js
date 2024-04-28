@@ -5,16 +5,12 @@
 
 */
 
-const currentUrl = window.location.href;
+hideObstructions();
 
-if (currentUrl.includes('glassdoor.com')) {
-    hideObstructions();
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', preventScrollLock);
-    } else {
-        preventScrollLock();
-    }
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preventScrollLock);
+} else {
+    preventScrollLock();
 }
 
 function hideObstructions() {
