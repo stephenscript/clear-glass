@@ -134,3 +134,6 @@ dist
 *.zip
 *.rar
 *.7zip
+
+# DS Store
+.DS_Store
