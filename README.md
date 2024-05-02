@@ -8,7 +8,7 @@
 
 - The Clear Glass extension removes aggressive tactics to obstruct use of the site
   
-## Websites included in this extension:
+## Websites included in this extension
 
 - Glassdoor.com
 - Teamblind.com
