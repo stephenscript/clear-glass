@@ -1,20 +1,26 @@
 /* removeBlockers.js
 
-- Hide obstructive elements from glassdoor.com and teamblind.com by overriding styles
+- Hide obstructive elements from glassdoor.com, teamblind.com, and repvue.com by overriding styles
 - Block restrictive scroll functions from preventing page navigation
 
 */
 
 console.log('Clear Glass loaded.');
 
+const lambdas = {
+    glassdoor: removeBlockersGlassdoor,
+    teamblind: removeBlockersBlind,
+    repvue: removeBlockersRepvue,
+};
+
 const url = window.location.href;
 
-if (url.includes('glassdoor')) {
-    console.log('Removing blockers from Glassdoor');
-    removeBlockersGlassdoor();
-} else if (url.includes('teamblind')) {
-    console.log('Removing blockers from Blind');
-    removeBlockersBlind();
+if (url) {
+    const domain = url.replace(/.+\/\/|www.|\..+/g, '');
+    if (domain in lambdas) {
+        console.log(`Removing blockers from ${domain}`);
+        lambdas[domain]();
+    }
 }
 
 // === GLASSDOOR ===
@@ -76,6 +82,25 @@ function removeBlockersBlind() {
             display: none !important;
         }
         div.z-20 {
+            display: none !important;
+        }
+        `;
+
+    document.head.prepend(styleElement);
+}
+
+// === REPVUE ===
+function removeBlockersRepvue() {
+    const styleElement = document.createElement('style');
+
+    styleElement.textContent = `
+        div[class^="LimitedAccess_wrapper"] {
+            --blur: 0 !important;
+        }
+        div[class^="LimitedAccess_wrapper"]::before {
+            display:none !important;
+        }
+        div[class^="LimitedAccess_companyWrapper"] {
             display: none !important;
         }
         `;
