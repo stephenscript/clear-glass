@@ -19,19 +19,14 @@ if (url) {
     const domain = url.replace(/.+\/\/|www.|\..+/g, '');
     if (domain in lambdas) {
         console.log(`Removing blockers from ${domain}`);
-        lambdas[domain]();
+        document.addEventListener('DOMContentLoaded', lambdas[domain]);
     }
 }
 
 // === GLASSDOOR ===
 function removeBlockersGlassdoor() {
     hideObstructions();
-
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', preventScrollLock);
-    } else {
-        preventScrollLock();
-    }
+    preventScrollLock();
 
     function hideObstructions() {
         const styleElement = document.createElement('style');
