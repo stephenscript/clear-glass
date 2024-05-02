@@ -81,6 +81,9 @@ function removeBlockersBlind() {
         div.backdrop-blur-sm {
             display: none !important;
         }
+        div.z-10 {
+            display: none !important;
+        }
         div.z-20 {
             display: none !important;
         }
