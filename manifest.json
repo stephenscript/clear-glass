@@ -20,7 +20,7 @@
                 "https://*.teamblind.com/*",
                 "https://*.repvue.com/*"
             ],
-            "js": ["main.js"],
+            "js": ["dist/removeBlockers.js"],
             "run_at": "document_start"
         }
     ]
