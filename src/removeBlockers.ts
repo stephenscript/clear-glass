@@ -20,12 +20,15 @@ class RemoveBlockers {
             }
             div#ContentWallHardsell {
                 display: none !important;
+                --blocker-tag: 1; 
             }
             div#HardsellOverlay {
                 display: none !important;
+                --blocker-tag: 1; 
             }
             div#UserAlert {
                 display: none !important;
+                --blocker-tag: 1; 
             }
         `;
         this.attachStyle(style);
@@ -39,15 +42,14 @@ class RemoveBlockers {
             }
             div.backdrop-blur-sm {
                 display: none !important;
+                --blocker-tag: 1; 
             }
-            div.z-10 {
-                display: none !important;
-            }
-            div.z-20 {
-                display: none !important;
-            }
+            div.z-10,
+            div.z-20,
+            div.z-30,
             div.z-40 {
                 display: none !important;
+                --blocker-tag: 1; 
             }
         `;
         this.attachStyle(style);
@@ -57,15 +59,41 @@ class RemoveBlockers {
         const style = `
             div[class^="LimitedAccess_wrapper"] {
                 --blur: 0 !important;
+                --blocker-tag: 1; 
             }
             div[class^="LimitedAccess_wrapper"]::before {
                 display:none !important;
+                --blocker-tag: 1; 
             }
             div[class^="LimitedAccess_companyWrapper"] {
                 display: none !important;
+                --blocker-tag: 1; 
             }
         `;
         this.attachStyle(style);
+    };
+
+    countHiddenElements = () => {
+        const elements = document.querySelectorAll('div');
+        let hiddenCount = 0;
+        elements.forEach((element) => {
+            if (window.getComputedStyle(element).getPropertyValue('--blocker-tag')) {
+                hiddenCount += 1;
+            }
+        });
+        return hiddenCount;
+    };
+
+    private showBlockedCount = () => {
+        const count = this.countHiddenElements();
+        if (count === 0) {
+            return;
+        }
+
+        chrome.runtime.sendMessage(
+            { action: 'displayCount', data: { blockedCount: count } },
+            (response) => {},
+        );
     };
 
     private attachStyle(style: string) {
@@ -101,7 +129,10 @@ class RemoveBlockers {
             const domain = this.url.replace(/.+\/\/|www.|\..+/g, '');
             if (domain in lambdas) {
                 console.log(`Removing blockers from ${domain}`);
-                document.addEventListener('DOMContentLoaded', lambdas[domain]);
+                document.addEventListener('DOMContentLoaded', () => {
+                    lambdas[domain]();
+                    this.showBlockedCount();
+                });
             }
         }
     };
