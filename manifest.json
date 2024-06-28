@@ -19,9 +19,16 @@
     "content_scripts": [
         {
             "matches": [
-                "https://*.glassdoor.com/*",
                 "https://*.teamblind.com/*",
-                "https://*.repvue.com/*"
+                "https://*.repvue.com/*",
+                "https://*.glassdoor.com/*",
+                "https://*.glassdoor.ca/*",
+                "https://*.glassdoor.de/*",
+                "https://*.glassdoor.co.uk/*",
+                "https://*.glassdoor.co.nz/*",
+                "https://*.glassdoor.co.mx/*",
+                "https://*.glassdoor.co.in/*",
+                "https://*.glassdoor.com.au/*"
             ],
             "js": ["dist/removeBlockers.js"],
             "run_at": "document_start"
