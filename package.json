@@ -1,6 +1,6 @@
 {
     "name": "clear-glass",
-    "version": "1.2.3",
+    "version": "1.2.4",
     "type": "module",
     "description": "Remove blocking elements from popular job review sites",
     "main": "src/removeBlockers.js",
