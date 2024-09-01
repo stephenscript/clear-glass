@@ -12,6 +12,33 @@ class RemoveBlockers {
         this.url = window.location.href;
     }
 
+    // for glassdoor review section
+    private replaceShowMoreButtons() {
+        const showMoreButtons = document.querySelectorAll(
+            'div#ReviewsFeed [class^="review-details_showMoreButton"]',
+        );
+
+        for (const button of showMoreButtons) {
+            const div = document.createElement('div');
+
+            const span = document.createElement('span');
+            const eye = document.createElement('span');
+            eye.innerText = '𓁹';
+            span.innerText = 'Full text made visible by ClearGlass';
+
+            div.appendChild(span);
+            div.appendChild(eye);
+
+            div.setAttribute('style', 'color:#085; padding-bottom: 5px;');
+            eye.setAttribute(
+                'style',
+                'color:#085; font-weight: bold; font-size: 24px; padding-left: 5px;',
+            );
+
+            button.replaceWith(div);
+        }
+    }
+
     private fromGlassDoor = () => {
         const style = `
             body {
@@ -30,9 +57,16 @@ class RemoveBlockers {
                 display: none !important;
                 --blocker-tag: 1; 
             }
+            div#ReviewsFeed span {
+                white-space: normal !important;
+            }
+            div#ReviewsFeed p {
+                max-height: none;
+            } 
         `;
         this.attachStyle(style);
         this.preventScrollLock();
+        setTimeout(() => this.replaceShowMoreButtons(), 1000);
     };
 
     private fromBlind = () => {
