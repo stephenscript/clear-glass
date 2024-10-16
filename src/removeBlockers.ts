@@ -62,6 +62,7 @@ class RemoveBlockers {
             }
             div#ReviewsFeed p {
                 max-height: none;
+                --limit: 0 !important;
             } 
 
             div#ReviewsFeed p {
