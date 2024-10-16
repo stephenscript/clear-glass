@@ -61,6 +61,7 @@ class RemoveBlockers {
                 white-space: normal !important;
             }
             div#ReviewsFeed p {
+                display: block !important;
                 max-height: none;
                 --limit: 0 !important;
             } 
