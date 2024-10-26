@@ -61,8 +61,22 @@ class RemoveBlockers {
                 white-space: normal !important;
             }
             div#ReviewsFeed p {
+                display: block !important;
+                max-height: none;
+                --limit: 0 !important;
+            } 
+
+            div#ReviewsFeed p {
                 max-height: none;
             } 
+
+            div#ReviewsFeed [class^="review-details_showMoreButton"] {
+                display: none;
+            }
+
+            div#ReviewsFeed [class^="review-details_fullWidth"] {
+                pointer-events: none;
+            }
         `;
         this.attachStyle(style);
         this.preventScrollLock();
