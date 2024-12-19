@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Clear Glass",
     "description": "Remove obstructions from the top job review sites",
-    "version": "1.2.6",
+    "version": "1.2.7",
     "action": {
         "default_popup": "splash.html",
         "default_icon": "icon128.png"
@@ -25,9 +25,14 @@
                 "https://*.glassdoor.com/*",
                 "https://*.glassdoor.com.au/*",
                 "https://*.glassdoor.com.br/*",
+                "https://*.glassdoor.at/*",
+                "https://*.glassdoor.ch/*",
                 "https://*.glassdoor.de/*",
+                "https://*.glassdoor.es/*",
                 "https://*.glassdoor.fr/*",
                 "https://*.glassdoor.hk/*",
+                "https://*.glassdoor.ie/*",
+                "https://*.glassdoor.it/*",
                 "https://*.glassdoor.nl/*",
                 "https://*.glassdoor.sg/*",
                 "https://*.glassdoor.co.in/*",
